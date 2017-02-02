@@ -1,0 +1,62 @@
+{
+  "name": "studious-carnival",
+  "version": "0.0.1",
+  "description": "Electron",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild:main": "npm run clean",
+    "build:main": "NODE_ENV=development webpack --config webpack.config.main.js",
+    "build:renderer": "PORT=8080 NODE_ENV=development webpack-dev-server --config webpack.config.renderer.js",
+    "prestart:electron": "npm run build:main",
+    "start:electron": "electron dist",
+    "start": "run-p -nr build:renderer start:electron",
+    "prepackage": "rimraf dist && NODE_ENV=production webpack -p",
+    "package": "electron-packager dist --out=release --asar --overwrite --all --osx-sign"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dilatorily/studious-carnival.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "Huy Dang Lê-Ngô",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dilatorily/studious-carnival/issues"
+  },
+  "homepage": "https://github.com/Dilatorily/studious-carnival#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.22.0",
+    "electron": "^1.5.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-hot-loader": "3.0.0-beta.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "devtron": "^1.4.0",
+    "electron-debug": "^1.1.0",
+    "electron-devtools-installer": "^2.1.0",
+    "electron-packager": "^8.5.1",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "html-webpack-plugin": "^2.28.0",
+    "npm-run-all": "^4.0.1",
+    "rimraf": "^2.5.4",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.2.1",
+    "winston": "^2.3.1"
+  }
+}
