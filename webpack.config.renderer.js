@@ -44,6 +44,7 @@ module.exports = {
           plugins: ['react-hot-loader/babel'],
         },
       },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
     ],
   },
   resolve: { extensions: ['.js', '.jsx', 'json'] },
@@ -54,5 +55,6 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
   },
+  devtool: isDevelopment ? 'eval-source-map' : false,
   target: 'electron-renderer',
 };

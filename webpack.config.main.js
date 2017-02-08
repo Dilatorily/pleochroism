@@ -31,6 +31,7 @@ module.exports = {
   },
   resolve: { extensions: ['.js', '.json'] },
   plugins: [...basePlugins, ...(isDevelopment ? developmentPlugins : productionPlugins)],
-  node: { __dirname: isDevelopment },
+  devtool: isDevelopment ? 'eval-source-map' : false,
   target: 'electron',
+  node: { __dirname: isDevelopment },
 };
