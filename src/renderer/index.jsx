@@ -24,7 +24,7 @@ const root = document.getElementById('root');
   };
 
   render(App);
-  if (isDevelopment && module.hot) {
+  if (isDevelopment() && module.hot) {
     module.hot.accept('./components/App', () => render(App));
   }
 })();

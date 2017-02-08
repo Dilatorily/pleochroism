@@ -40,6 +40,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
+          babelrc: false,
           presets: [['latest', { es2015: { modules: false } }], 'stage-0', 'react'],
           plugins: ['react-hot-loader/babel'],
         },

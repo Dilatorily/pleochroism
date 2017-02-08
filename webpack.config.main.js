@@ -25,7 +25,10 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        options: { presets: [['latest', { es2015: { modules: false } }], 'stage-0'] },
+        options: {
+          babelrc: false,
+          presets: [['latest', { es2015: { modules: false } }], 'stage-0'],
+        },
       },
     ],
   },

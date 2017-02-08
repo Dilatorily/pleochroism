@@ -5,7 +5,7 @@ import { isDevelopment } from './utils';
 
 const getEnhancer = async () => {
   let middlewares = [ReduxThunk];
-  if (isDevelopment) {
+  if (isDevelopment()) {
     const ReduxLogger = await import('redux-logger');
     const developmentMiddlewares = [ReduxLogger()];
     middlewares = [...middlewares, ...developmentMiddlewares];
@@ -15,7 +15,7 @@ const getEnhancer = async () => {
   }
 
   let enhancers = [applyMiddleware(...middlewares)];
-  if (isDevelopment) {
+  if (isDevelopment()) {
     const developmentEnhancers = [
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line no-underscore-dangle, max-len
     ];
@@ -32,7 +32,7 @@ export default async (preloadedState = {}) => {
   const enhancer = await getEnhancer();
   const store = createStore(reducers, preloadedState, enhancer);
 
-  if (isDevelopment && module.hot) {
+  if (isDevelopment() && module.hot) {
     module.hot.accept('./reducers', () => store.replaceReducer(reducers));
   }
 
