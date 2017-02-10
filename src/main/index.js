@@ -16,11 +16,19 @@ const createRenderer = async () => {
     await Promise.all([installExtension(REACT_DEVELOPER_TOOLS), installExtension(REDUX_DEVTOOLS)]);
   }
 
-  renderer = new BrowserWindow({ width: 800, height: 600 });
+  renderer = new BrowserWindow({
+    width: 400,
+    height: 400,
+    useContentSize: true,
+    minWidth: 400,
+    minHeight: 400,
+    show: false,
+  });
   renderer.loadURL(isDevelopment() ? 'http://localhost:8080' : `file://${__dirname}/index.html`);
   renderer.on('closed', () => {
     renderer = null;
   });
+  renderer.once('ready-to-show', () => renderer.show());
 };
 
 app.on('ready', createRenderer);

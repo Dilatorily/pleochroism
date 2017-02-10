@@ -1,3 +1,7 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({ noop: (state = {}) => state });
+import seekbar from './seekbar';
+
+export default combineReducers({
+  seekbar,
+});

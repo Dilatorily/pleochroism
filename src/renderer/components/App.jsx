@@ -1,5 +1,18 @@
 import React from 'react';
 
-const App = () => <h1>Hello, World with hot reloading?!</h1>;
+import Slider from './Slider';
+
+const styles = {
+  app: {
+    overflow: 'hidden',
+  },
+};
+
+const App = () => (
+  <div style={styles.app}>
+    <h1>Hello, World with hot reloading?!</h1>
+    <Slider progress={50} />
+  </div>
+);
 
 export default App;

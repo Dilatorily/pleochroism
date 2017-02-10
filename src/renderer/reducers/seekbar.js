@@ -1,0 +1,20 @@
+const SEEK = 'studious-carnival/seekbar/SEEK';
+const RESET = 'studious-carnival/seekbar/RESET';
+
+const INITIAL_STATE = {
+  progress: 0,
+};
+
+export default (state = INITIAL_STATE, action = {}) => {
+  switch (action.type) {
+    case SEEK:
+      return { progress: action.payload };
+    case RESET:
+      return INITIAL_STATE;
+    default:
+      return state;
+  }
+};
+
+export const changeSeekbar = progress => ({ type: SEEK, payload: progress });
+export const resetSeekbar = () => ({ type: RESET });
