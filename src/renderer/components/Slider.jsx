@@ -97,7 +97,7 @@ class Slider extends React.Component {
       return onChange(100);
     }
 
-    return onChange(((position - padding) / (width - (2 * padding))) * 100);
+    return onChange(((position - padding) / (width - height)) * 100);
   }
 
   render() {
