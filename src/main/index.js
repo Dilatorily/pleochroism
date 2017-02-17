@@ -1,7 +1,8 @@
 import { app, BrowserWindow } from 'electron';
 
+import { isDevelopment } from '../utils';
+
 let renderer = null;
-const isDevelopment = () => process.env.NODE_ENV === 'development';
 
 const createRenderer = async () => {
   if (isDevelopment()) {

@@ -3,6 +3,6 @@
     "latest",
     "stage-0",
     "react"
-],
-  "plugins": ["dynamic-import-webpack"]
+  ],
+  "plugins": ["dynamic-import-node"]
 }
