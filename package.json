@@ -1,8 +1,8 @@
 {
-  "name": "studious-carnival",
+  "name": "pleochroism",
   "version": "0.0.1",
-  "description": "Electron",
-  "main": "index.js",
+  "description": "Cross-platform Electron-based Music Player",
+  "main": "src/main/index.js",
   "scripts": {
     "clean": "rimraf dist",
     "prebuild:main": "npm run clean",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dilatorily/studious-carnival.git"
+    "url": "git+https://github.com/Dilatorily/pleochroism.git"
   },
   "keywords": [
     "electron"
@@ -25,9 +25,9 @@
   "author": "Huy Dang Lê-Ngô",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Dilatorily/studious-carnival/issues"
+    "url": "https://github.com/Dilatorily/pleochroism/issues"
   },
-  "homepage": "https://github.com/Dilatorily/studious-carnival#readme",
+  "homepage": "https://github.com/Dilatorily/pleochroism#readme",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "electron": "^1.6.0",
