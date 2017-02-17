@@ -1,6 +1,5 @@
 import React from 'react';
 import { Style } from 'radium';
-import { isDevelopment } from '../utils';
 
 class Slider extends React.Component {
   constructor(props) {
@@ -13,12 +12,12 @@ class Slider extends React.Component {
   }
 
   getStyleRules = () => {
-    const { color, height, progress } = this.props;
+    const { activeColor, backgroundColor, foregroundColor, height, progress } = this.props;
     const { isDragging } = this.state;
     const padding = height / 2;
 
     return {
-      '.seekbar': {
+      '.slider': {
         height,
         width: '100%',
         position: 'relative',
@@ -26,8 +25,8 @@ class Slider extends React.Component {
         alignItems: 'center',
         cursor: isDragging ? '-webkit-grabbing' : 'pointer',
       },
-      '.seekbar .background': {
-        backgroundColor: 'silver',
+      '.slider .background': {
+        backgroundColor,
         position: 'absolute',
         height: height / 3,
         left: padding,
@@ -35,7 +34,7 @@ class Slider extends React.Component {
         transition: isDragging ? 'none' : '0.25s ease-in-out',
         borderRadius: padding,
       },
-      '.seekbar .foreground': {
+      '.slider .foreground': {
         position: 'absolute',
         height: height / 3,
         left: padding,
@@ -43,7 +42,7 @@ class Slider extends React.Component {
         transition: isDragging ? 'none' : '0.25s ease-in-out',
         borderRadius: padding,
       },
-      '.seekbar .thumb': {
+      '.slider .thumb': {
         borderRadius: '50%',
         position: 'absolute',
         height,
@@ -52,14 +51,14 @@ class Slider extends React.Component {
         transition: isDragging ? 'none' : '0.25s ease-in-out',
         cursor: '-webkit-grab',
       },
-      '.seekbar .thumb:active': {
+      '.slider .thumb:active': {
         cursor: '-webkit-grabbing',
       },
-      '.seekbar .hover': {
-        backgroundColor: isDragging ? `rgb(${color.red}, ${color.blue}, ${color.green})` : 'grey',
+      '.slider .hover': {
+        backgroundColor: isDragging ? activeColor : foregroundColor,
       },
-      '.seekbar:hover .hover': {
-        backgroundColor: `rgb(${color.red}, ${color.blue}, ${color.green})`,
+      '.slider:hover .hover': {
+        backgroundColor: activeColor,
       },
     };
   };
@@ -85,10 +84,10 @@ class Slider extends React.Component {
   handleChange = (event) => {
     event.preventDefault();
     const { onChange, height } = this.props;
-    const { offsetLeft, offsetWidth } = this.state;
+    const { isDragging, offsetLeft, offsetWidth } = this.state;
     const padding = height / 2;
-    const position = event.clientX - offsetLeft;
-    const width = offsetWidth;
+    const position = event.clientX - (isDragging ? offsetLeft : event.currentTarget.offsetLeft);
+    const width = isDragging ? offsetWidth : event.currentTarget.offsetWidth;
 
     if (position <= padding) {
       return onChange(0);
@@ -103,7 +102,7 @@ class Slider extends React.Component {
 
   render() {
     return (
-      <div className="seekbar" onMouseDown={this.handleMouseDown}>
+      <div className="slider" onMouseDown={this.handleMouseDown}>
         <div className="background" />
         <div className="foreground hover" />
         <div className="thumb hover" />
@@ -113,25 +112,19 @@ class Slider extends React.Component {
   }
 }
 
-if (isDevelopment()) {
-  Slider.propTypes = {
-    color: React.PropTypes.shape({
-      red: React.PropTypes.number,
-      blue: React.PropTypes.number,
-      green: React.PropTypes.number,
-    }),
-    height: React.PropTypes.number,
-    onChange: React.PropTypes.func,
-    progress: React.PropTypes.number.isRequired,
-  };
-}
+Slider.propTypes = {
+  activeColor: React.PropTypes.string,
+  backgroundColor: React.PropTypes.string,
+  foregroundColor: React.PropTypes.string,
+  height: React.PropTypes.number,
+  onChange: React.PropTypes.func,
+  progress: React.PropTypes.number.isRequired,
+};
 
 Slider.defaultProps = {
-  color: {
-    red: 0,
-    blue: 0,
-    green: 0,
-  },
+  activeColor: 'black',
+  backgroundColor: 'silver',
+  foregroundColor: 'grey',
   height: 12,
   onChange: () => {},
 };

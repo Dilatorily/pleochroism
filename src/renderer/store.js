@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import { isDevelopment } from './utils';
+import { isDevelopment } from '../utils';
 
 const getEnhancer = async () => {
   let middlewares = [ReduxThunk];

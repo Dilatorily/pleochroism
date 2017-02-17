@@ -6,7 +6,7 @@ import 'normalize.css';
 
 import App from './components/App';
 import configureStore from './store';
-import { isDevelopment } from './utils';
+import { isDevelopment } from '../utils';
 
 const root = document.getElementById('root');
 
