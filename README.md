@@ -5,15 +5,15 @@
 A cross-platform music player made with :heart:
 
 ## Features
-- Works with all of your music files
-- Automatically identifies your song and completes its metadata using [MusicBrainz](https://musicbrainz.org)
-- Manages your library and your custom playlists
-- Supports media keys
-- Integrates seamlessly with your OS
-- Scrobbles to [Last.fm](https://www.last.fm)
+- ~~Works with all of your music files~~ *Available soon!*
+- ~~Automatically identifies your song and completes its metadata using [MusicBrainz](https://musicbrainz.org)~~
+- ~~Manages your library and your custom playlists~~
+- ~~Supports media keys~~
+- ~~Integrates seamlessly with your OS~~
+- ~~Scrobbles to [Last.fm](https://www.last.fm)~~
 
 ## Installing Pleochroism
-Use the installers for your operating system located *~~here~~*. *Available soon!*
+Use the installers for your operating system located *~~here~~*.
 
 ## Building Pleochroism
 Make sure that [NPM](https://www.npmjs.com) and [Yarn](https://yarnpkg.com) are installed on your system.
@@ -27,7 +27,7 @@ It should build the executable for every available platforms.
 ## Developing Pleochroism
 To develop Pleochroism, the `yarn start` command will start an Electron process and a server process located at [http://0.0.0.0:8080](http://0.0.0.0:8080).
 
-The renderer process will have hot-reloading enabled using [react-hot-loader](https://github.com/gaearon/react-hot-loader/tree/next), and the developer console will be available. [Devtron](http://electron.atom.io/devtron), [React Developer Tools](https://github.com/facebook/react-devtools) and [Redux DevTools](https://github.com/gaearon/redux-devtools) are installed in the developer console.
+The renderer process will have hot-reloading enabled using [React Hot Loader](https://github.com/gaearon/react-hot-loader/tree/next), and the developer console will be available. [Devtron](http://electron.atom.io/devtron), [React Developer Tools](https://github.com/facebook/react-devtools) and [Redux DevTools](https://github.com/gaearon/redux-devtools) are installed in the developer console.
 
 ## Contributing
 Contributions through pull requests are always welcome, no matter how large or small. Unit tests are appreciated!
