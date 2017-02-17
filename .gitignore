@@ -3,6 +3,7 @@
 !.editorconfig
 !.eslintrc
 !.gitignore
+!.travis.yml
 *.log
 coverage
 dist
