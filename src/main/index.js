@@ -1,3 +1,4 @@
+import fs from 'fs';
 import { app, BrowserWindow } from 'electron';
 
 import { isDevelopment } from '../utils';
@@ -44,4 +45,8 @@ app.on('activate', () => {
   if (renderer === null) {
     createRenderer();
   }
+});
+
+fs.readdir(`${__dirname}/ipc`, (error, files) => {
+  files.forEach(file => import(`./ipc/${file}`));
 });
