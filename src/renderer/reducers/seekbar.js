@@ -1,5 +1,5 @@
-const SEEK = 'studious-carnival/seekbar/SEEK';
-const RESET = 'studious-carnival/seekbar/RESET';
+const SEEK = 'pleochroism/seekbar/SEEK';
+const RESET = 'pleochroism/seekbar/RESET';
 
 const INITIAL_STATE = {
   progress: 0,
