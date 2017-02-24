@@ -1,5 +1,4 @@
 import React from 'react';
-import { loadFile } from '../ipc/load';
 
 const styles = {
   app: {
@@ -7,14 +6,10 @@ const styles = {
   },
 };
 
-const onChange = (event) => {
-  loadFile(event.target.files[0].path);
-};
-
 const App = () => (
   <div style={styles.app}>
     <h1>Hello, World with hot reloading?!</h1>
-    <input type="file" onChange={onChange} />
+    <input type="file" onChange={() => {}} />
   </div>
 );
 

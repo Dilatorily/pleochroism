@@ -1,7 +1,7 @@
-import fs from 'fs';
 import { app, BrowserWindow } from 'electron';
 
-import { isDevelopment } from '../utils';
+import { createMainListeners } from '../shared/ipc';
+import { isDevelopment } from '../shared/utils';
 
 let renderer = null;
 
@@ -47,6 +47,4 @@ app.on('activate', () => {
   }
 });
 
-fs.readdir(`${__dirname}/ipc`, (error, files) => {
-  files.forEach(file => import(`./ipc/${file}`));
-});
+createMainListeners();

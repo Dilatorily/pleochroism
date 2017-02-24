@@ -1,10 +1,12 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import ReduxThunk from 'redux-thunk';
+
 import reducers from './reducers';
-import { isDevelopment } from '../utils';
+import { createMiddleware as ReduxIPCMiddleware } from '../shared/ipc';
+import { isDevelopment } from '../shared/utils';
 
 const getEnhancer = async () => {
-  let middlewares = [ReduxThunk];
+  let middlewares = [ReduxThunk, ReduxIPCMiddleware()];
   if (isDevelopment()) {
     const ReduxLogger = await import('redux-logger');
     const developmentMiddlewares = [ReduxLogger()];
