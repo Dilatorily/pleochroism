@@ -1,8 +1,8 @@
 import { applyMiddleware, compose, createStore } from 'redux';
+import { createMiddleware as ReduxIPCMiddleware } from 'redux-ipc-electron';
 import ReduxThunk from 'redux-thunk';
 
 import reducers from './reducers';
-import { createMiddleware as ReduxIPCMiddleware } from '../shared/ipc';
 import { isDevelopment } from '../shared/utils';
 
 const getEnhancer = async () => {

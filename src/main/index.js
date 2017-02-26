@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
+import { createMainListeners } from 'redux-ipc-electron';
 
-import { createMainListeners } from '../shared/ipc';
 import { isDevelopment } from '../shared/utils';
 
 let renderer = null;
